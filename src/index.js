@@ -1,5 +1,7 @@
 // require('dotenv').config({path: './env'})
 import dotenv from 'dotenv'
+import express from 'express'
+const app = express()
 import connectDB from './db/index.js';
 // import mongoose from 'mongoose';
 // import {DB_NAME} from './constants';
@@ -10,15 +12,27 @@ dotenv.config({
 
 
 
+// yknow connectDB() was an async funct thus will return a promise
 connectDB()
+.then(()=>{
+    // app.on("error",(error)=>{
+    //     console.log(`Error while running the app: `,error);
+    //     throw error
+    // })
+
+    app.listen(process.env.PORT||8000,()=>{
+        console.log(`App running on the port ${process.env.PORT}`);
+    })
+})
+.catch((err)=>{
+    console.log(`got an error. connection failed! `,err);
+})
 
 
 
 
 
 
-// import express from 'express'
-// const app = express()
 
 //********* */ RULE OF THUMB WHILE HANDLING ANY DATA FETCHING FROM YHE DATABASE IS THAT:**********
 // 1. USE TRY-CATCH : HUGE CHANCES YOUD RUN INTO AN ERROR
