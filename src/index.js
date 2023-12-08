@@ -1,8 +1,8 @@
 // require('dotenv').config({path: './env'})
 import dotenv from 'dotenv'
 import express from 'express'
-const app = express()
 import connectDB from './db/index.js';
+import {app} from './app.js'
 // import mongoose from 'mongoose';
 // import {DB_NAME} from './constants';
 
@@ -10,6 +10,7 @@ dotenv.config({
     path: './env'
 })
 
+// const app = express()
 
 
 // yknow connectDB() was an async funct thus will return a promise

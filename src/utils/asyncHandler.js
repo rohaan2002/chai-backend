@@ -26,8 +26,8 @@
 
 
 const asyncHandler = (requestHandler)=>{
-    (req,res,next)=>{
-        Promise.resolve(requestHandler(req,res,next)).catch((err)=>next(err)) //promise.resolve makes the return value into a promise, so if its resolved than good if it doesnt, the error get caught in catch, which mpasses in the next middleware
+    return (req,res,next)=>{
+        Promise.resolve(requestHandler(req,res,next)).catch((err)=>next(err)) //promise.resolve makes the return value into a promise, so if its resolved then good if it doesnt, the error get caught in catch, which mpasses in the next middleware
     }
 }
 export {asyncHandler};

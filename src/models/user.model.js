@@ -65,7 +65,7 @@ userSchema.pre("save", async function(next){
 
 // now to know if password is correct, we use mongoose method like this one
 userSchema.methods.isPasswordCorrect = async function(password){
-    return await bcrypt.compare(password,this.password)
+    return await bcrypt.compare(password,this.password)  //password is the one user enters and this.password is now the encrypted one. using bcrypt we can compare both ie if normal wud be same as encrypted one after encrypting
 }
 // bcrypt takes time to encypt so we use async
 
